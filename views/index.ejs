@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <!-- Required meta tags -->
@@ -17,25 +17,80 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class=" container-fluid">
-        <a class="navbar-brand" href="#">Luis Salinas</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i class='bx bxs-lemon'></i>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><i class='bx bx-leaf'></i>Link</a>
-                </li>
-            </ul>
-        </div>
+            <a class="navbar-brand" href="#">Luis Salinas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class='bx bxs-lemon'></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class='bx bx-leaf'></i>Link</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="card mt-2">
+            <div class="card-body d-flex align-items-center">
+                <a href="./create.ejs" class="btn btn-primary m-2">
+                    <i class='bx bxs-plus-circle'></i>
+                    <span>Agregar</span>
+                </a>
+            </div>
+        </div>
+        <!--! Tabla -->
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="responsive-table">
+                    <table class="table table-striped">
+                        <thead class="bg-warning">
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% results.forEach((element)=> { %>
+                                <tr>
+                                    <td>
+                                        <%= element.id %>
+                                    </td>
+                                    <td>
+                                        <%= element.usuario %>
+                                    </td>
+                                    <td>
+                                        <%= element.rol %>
+                                    </td>
+                                    <td>
+                                        <!-- Edit -->
+                                        <a href="/edit" class="btn btn-dark"><i
+                                                class='bx bxs-edit'></i><span>Editar</span>
+                                        </a>
+                                        <!-- Delete -->
+                                        <a href="/edit" class="btn btn-danger">
+                                            <i class='bx bx-trash'></i><span>Eliminar</span>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
