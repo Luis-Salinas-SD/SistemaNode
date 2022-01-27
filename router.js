@@ -14,11 +14,7 @@ router.get('/', (request, response) => {
     })
 
 })
-//* Crear Registros
-router.get('/create', (request, response) => {
-    response.render('create');
-})
-
+//* Editar Registros
 router.get('/edit/:id', (request, response) => {
     const id = request.params.id;
     conexion.query('SELECT * FROM usuarios WHERE id=?', [id], (error, results) => {
@@ -30,10 +26,28 @@ router.get('/edit/:id', (request, response) => {
     })
 })
 
+//* Crear Registros
+router.get('/create', (request, response) => {
+    response.render('create');
+})
+
+//& Eliminar Registros
+
+router.get('/delete/:id', (request, response) => {
+    const id = request.params.id;
+    conexion.query('DELETE FROM usuarios WHERE id = ?', [id], (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            response.redirect('/')
+        }
+    })
+})
+
 
 const crud = require('./controllers/crud');
-const req = require('express/lib/request');
 router.post('/save', crud.save)
+router.post('/update', crud.update)
 
 module.exports = router;
 
