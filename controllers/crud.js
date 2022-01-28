@@ -2,6 +2,7 @@
 const { request, response } = require('express');
 const conexion = require('../database/db');
 
+//!Agregar
 exports.save = (request, response) => {
     const user = request.body.user;
     const rol = request.body.rol;
@@ -14,6 +15,8 @@ exports.save = (request, response) => {
         }
     })
 }
+
+//*Actualizar
 
 exports.update = (request, response) => {
     const id = request.body.id;

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const conexion = require('./database/db')
 
-//! Mostrar Registros
+//! Ruta Mostrar Registros
 router.get('/', (request, response) => {
     conexion.query('SELECT * FROM usuarios', (error, results) => {
         if (error) {
@@ -14,7 +14,7 @@ router.get('/', (request, response) => {
     })
 
 })
-//* Editar Registros
+//* Ruta Editar Registros
 router.get('/edit/:id', (request, response) => {
     const id = request.params.id;
     conexion.query('SELECT * FROM usuarios WHERE id=?', [id], (error, results) => {
@@ -26,12 +26,12 @@ router.get('/edit/:id', (request, response) => {
     })
 })
 
-//* Crear Registros
+//$ Ruta Crear Registros
 router.get('/create', (request, response) => {
     response.render('create');
 })
 
-//& Eliminar Registros
+//& Ruta Eliminar Registros
 
 router.get('/delete/:id', (request, response) => {
     const id = request.params.id;
